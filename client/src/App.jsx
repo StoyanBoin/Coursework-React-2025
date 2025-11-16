@@ -2,7 +2,7 @@ function App() {
 
   return (
     <>
-      <h1>Coursework Priject!</h1>
+      <h1>Coursework Project!</h1>
     </>
   )
 }
