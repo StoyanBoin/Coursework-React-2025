@@ -1,4 +1,4 @@
-import Blog from "../blog/Blog.jsx";
+import HomeBlog from "../blog/HomeBlog.jsx";
 import Hero from "../hero/Hero.jsx";
 import Choose from "../info/Choose.jsx";
 import Help from "../info/Help.jsx";
@@ -13,7 +13,7 @@ export default function Home() {
             <Choose />
             <Help />
             <PopularProduct />
-            <Blog />
+            <HomeBlog />
         </>
     );
 }
