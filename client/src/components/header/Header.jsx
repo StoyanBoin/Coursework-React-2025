@@ -19,7 +19,7 @@ export default function Header() {
                             <li><a class="nav-link" href="/about">About us</a></li>
                             <li><a class="nav-link" href="services.html">Services</a></li>
                             <li><a class="nav-link" href="blog.html">Blog</a></li>
-                            <li><a class="nav-link" href="contact.html">Contact us</a></li>
+                            <li><a class="nav-link" href="/contact">Contact us</a></li>
                         </ul>
 
                         <ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
