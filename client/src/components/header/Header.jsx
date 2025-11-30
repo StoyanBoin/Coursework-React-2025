@@ -11,15 +11,15 @@ export default function Header() {
                     </button>
 
                     <div className="collapse navbar-collapse" id="navbarsFurni">
-                        <ul className="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-                            <li className="nav-item">
-                                <a className="nav-link" href="/">Home</a>
+                        <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">Home</a>
                             </li>
-                            <li><a className="nav-link" href="shop.html">Shop</a></li>
-                            <li><a className="nav-link" href="about.html">About us</a></li>
-                            <li><a className="nav-link" href="services.html">Services</a></li>
-                            <li><a className="nav-link" href="blog.html">Blog</a></li>
-                            <li><a className="nav-link" href="contact.html">Contact us</a></li>
+                            <li><a class="nav-link" href="/shop">Shop</a></li>
+                            <li><a class="nav-link" href="/about">About us</a></li>
+                            <li><a class="nav-link" href="services.html">Services</a></li>
+                            <li><a class="nav-link" href="blog.html">Blog</a></li>
+                            <li><a class="nav-link" href="contact.html">Contact us</a></li>
                         </ul>
 
                         <ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
@@ -28,7 +28,7 @@ export default function Header() {
                         </ul>
                     </div>
                 </div>
-            </nav>
-        </header>
+            </nav >
+        </header >
     );
 }
