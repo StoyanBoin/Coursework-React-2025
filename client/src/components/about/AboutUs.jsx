@@ -31,8 +31,6 @@ export default function AboutUs() {
                     </div>
                 </div>
             </div>
-
-
             {/* <!-- End Hero Section --> */}
 
 
