@@ -6,7 +6,10 @@ import Shop from "./components/shop/Shop.jsx"
 import AboutUs from "./components/about/AboutUs.jsx"
 import ContactUs from "./components/contact/ContactUs.jsx"
 import Blog from "./components/blog/Blog.jsx"
+import Login from "./components/login/Login.jsx"
+import Register from "./components/register/Register.jsx"
 import Cart from "./components/cart/Cart.jsx"
+
 
 function App() {
 
@@ -20,6 +23,8 @@ function App() {
                 <Route path="/about" element={<AboutUs />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/contact" element={<ContactUs />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
                 <Route path="/cart" element={<Cart />} />
             </Routes>
 
