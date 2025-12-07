@@ -77,6 +77,11 @@ export default function Register() {
                         Register
                     </button>
                 </form>
+                <div className="text-center mt-3">
+                    <p>
+                        Already have an account? <a href="/login">Login here</a>
+                    </p>
+                </div>
             </div>
         </>
     );
