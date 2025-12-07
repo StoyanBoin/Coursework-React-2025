@@ -6,6 +6,7 @@ import Shop from "./components/shop/Shop.jsx"
 import AboutUs from "./components/about/AboutUs.jsx"
 import ContactUs from "./components/contact/ContactUs.jsx"
 import Blog from "./components/blog/Blog.jsx"
+import Cart from "./components/cart/Cart.jsx"
 
 function App() {
 
@@ -14,11 +15,12 @@ function App() {
             <Header />
 
             <Routes>
-                <Route path="/" element={<Home/>} />
+                <Route path="/" element={<Home />} />
                 <Route path="/shop" element={<Shop />} />
                 <Route path="/about" element={<AboutUs />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/contact" element={<ContactUs />} />
+                <Route path="/cart" element={<Cart />} />
             </Routes>
 
             <Footer />

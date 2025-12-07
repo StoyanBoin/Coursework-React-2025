@@ -23,7 +23,8 @@ export default function Header() {
 
                         <ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
                             <li><a className="nav-link" href="/"><img src="images/user.svg" /></a></li>
-                            <li><a className="nav-link" href="cart.html"><img src="images/cart.svg" /></a></li>
+                            <li><a className="nav-link" href="/cart"><img src="images/cart.svg" /></a></li>
+
                         </ul>
                     </div>
                 </div>

@@ -1,7 +1,6 @@
 export default function Shop() {
     return (
         <>
-
             {/* <!-- Start Hero Section --> */}
             <div class="hero">
                 <div class="container">
