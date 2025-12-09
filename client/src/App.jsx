@@ -11,6 +11,7 @@ import Blog from "./components/blog/Blog.jsx"
 import Login from "./components/login/Login.jsx"
 import Register from "./components/register/Register.jsx"
 import Cart from "./components/cart/Cart.jsx"
+import Logout from "./components/logout/Logout.jsx"
 
 
 function App() {
@@ -22,7 +23,11 @@ function App() {
             throw new Error("User with this email already exists.");
         }
 
-        setRegisteredUsers(prevUsers => [...prevUsers, { username, email, password }]);
+        const newUser = { username, email, password };
+
+        setRegisteredUsers(prevUsers => [...prevUsers,  newUser]);
+
+        setUser(newUser);
     };
 
     const loginHandler = (email, password) => {
@@ -32,6 +37,10 @@ function App() {
         }
         
         setUser(user);
+    }
+
+    const logoutHandler = () => {
+        setUser(null);
     }
 
 
@@ -48,6 +57,7 @@ function App() {
                 <Route path="/contact" element={<ContactUs />} />
                 <Route path="/login" element={<Login onLogin={loginHandler} />} />
                 <Route path="/register" element={<Register onRegister={registerHandler} />} />
+                <Route path="/logout" element={<Logout onLogout={logoutHandler} />} />
                 <Route path="/cart" element={<Cart />} />
             </Routes>
 

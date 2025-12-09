@@ -21,6 +21,7 @@ export default function Header() {
                             <li><a class="nav-link" href="/contact">Contact us</a></li>
                             <li><a class="nav-link" href="/login">Login</a></li>
                             <li><a class="nav-link" href="/register">Register</a></li>
+                            <li><a class="nav-link" href="/logout">Logout</a></li>
                         </ul>
 
                         <ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
