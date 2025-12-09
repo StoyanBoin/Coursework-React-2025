@@ -1,4 +1,34 @@
-export default function Login() {
+import { useNavigate } from "react-router";
+
+export default function Login(
+    onLogin,
+) {
+
+    const navigate = useNavigate();
+
+    const loginHandler = (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+
+        const email = formData.get("email");
+        const password = formData.get("password");
+
+        if (!email || !password) {
+            return alert("All fields are required!");
+        }
+        try {
+            onLogin({
+                email,
+                password
+            });
+
+            navigate("/");
+        } catch (err) {
+            alert(err.message);
+            return;
+        }
+    }
+
     return (
         <>
             {/* <!-- Start Hero Section --> */}
@@ -20,7 +50,7 @@ export default function Login() {
             <div className="container mt-5">
                 <h2 className="mb-4 text-center">Login</h2>
                 <form
-                    action="/login"
+                    action={loginHandler}
                     method="POST"
                     className="mx-auto"
                     style={{ maxWidth: 400 }}

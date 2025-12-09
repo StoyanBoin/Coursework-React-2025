@@ -1,4 +1,32 @@
-export default function Register() {
+import { useNavigate } from "react-router";
+
+export default function Register({
+    onRegister,
+}) {
+    const navigate = useNavigate();
+
+    const registerSubmitHandler = (formData) => {
+        const username = formData.get("username");
+        const email = formData.get("email");
+        const password = formData.get("password");
+        const confirmPassword = formData.get("confirmPassword");
+
+        if (!username || !email || !password) {
+            return alert("All fields are required!");
+        }
+
+        if (password !== confirmPassword) {
+            return alert("Passwords missmatch!");
+        }
+        onRegister({ 
+            username, 
+            email,
+            password
+        });
+
+        navigate("/");
+    }
+
     return (
         <>
             {/* <!-- Start Hero Section --> */}
@@ -20,7 +48,7 @@ export default function Register() {
             <div className="container mt-5">
                 <h2 className="mb-4 text-center">Register</h2>
                 <form
-                    action="/register"
+                    action={registerSubmitHandler}
                     method="POST"
                     className="mx-auto"
                     style={{ maxWidth: 500 }}

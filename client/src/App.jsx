@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { Route, Routes } from "react-router"
 import Header from "./components/header/Header.jsx"
 import Footer from "./components/footer/Footer.jsx"
@@ -13,10 +14,30 @@ import Cart from "./components/cart/Cart.jsx"
 
 
 function App() {
+    const [registeredUsers, setRegisteredUsers] = useState([]);
+    const [user, setUser] = useState(null);
+
+    const registerHandler = (username, email, password) => {
+        if (registeredUsers.find(u => u.email === email)) {
+            throw new Error("User with this email already exists.");
+        }
+
+        setRegisteredUsers(prevUsers => [...prevUsers, { username, email, password }]);
+    };
+
+    const loginHandler = (email, password) => {
+        const user = registeredUsers.find(u => u.email === email && u.password === password);
+        if (!user) {
+            throw new Error("No user found with this email.");
+        }
+        
+        setUser(user);
+    }
+
 
     return (
         <>
-            <Header />
+            <Header user={user} />
 
             <Routes>
                 <Route path="/" element={<Home />} />
@@ -25,8 +46,8 @@ function App() {
                 <Route path="/about" element={<AboutUs />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/contact" element={<ContactUs />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
+                <Route path="/login" element={<Login onLogin={loginHandler} />} />
+                <Route path="/register" element={<Register onRegister={registerHandler} />} />
                 <Route path="/cart" element={<Cart />} />
             </Routes>
 
