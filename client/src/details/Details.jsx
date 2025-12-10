@@ -1,7 +1,8 @@
-import {  useEffect, useState } from "react";
-import { Link, useParams } from "react-router";
+import { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router";
 
 export default function Details() {
+    const navigate = useNavigate();
     const { id } = useParams();
     const [furniture, setFurniture] = useState({});
 
@@ -10,9 +11,26 @@ export default function Details() {
             .then((response) => response.json())
             .then(result => setFurniture(result))
             .catch((err) => alert(err.message));
-    
+
     }, [id]);
 
+    const deleteFurniture = async () => {
+        const isConfirmed = confirm('Are you sure you want to delete this furniture item?');
+
+        if (!isConfirmed) {
+            return;
+        }
+
+        try {
+            await fetch(`http://localhost:3030/jsonstore/furniture/${id}`, {
+                method: 'DELETE',
+            });
+
+            navigate('/shop');
+        } catch (err) {
+            alert(err.message);
+        }
+    }
     return (
         <>
             <div className="hero">
@@ -59,13 +77,17 @@ export default function Details() {
                             <Link to="/edit/001" className="btn btn-warning">
                                 Edit
                             </Link>
-                            <Link href="/edit/001" className="btn btn-warning">
-                                Delate
-                            </Link>
+                            {/* <Link href={`/shop/${id}/delete`} className="btn btn-warning">Delete</Link> */}
+                            <button
+                                onClick={deleteFurniture}
+                                className="btn btn-danger"
+                            >
+                                Delete
+                            </button>
                         </div>
                     </div>
                 </div>
             </div >
         </>
     );
-}
+} 
