@@ -1,6 +1,18 @@
-import { Link } from "react-router";
+import {  useEffect, useState } from "react";
+import { Link, useParams } from "react-router";
 
 export default function Details() {
+    const { id } = useParams();
+    const [furniture, setFurniture] = useState({});
+
+    useEffect(() => {
+        fetch(`http://localhost:3030/jsonstore/furniture/${id}`)
+            .then((response) => response.json())
+            .then(result => setFurniture(result))
+            .catch((err) => alert(err.message));
+    
+    }, [id]);
+
     return (
         <>
             <div className="hero">
@@ -21,27 +33,26 @@ export default function Details() {
                 <h2 className="mb-4 text-center">Furniture Details</h2>
                 <div className="card mx-auto" style={{ maxWidth: 700 }}>
                     <img
-                        src="https://example.com/nordic-chair.jpg"
+                        src={furniture.imageUrl}
                         className="card-img-top"
                         alt="Nordic Chair"
                     />
                     <div className="card-body">
-                        <h5 className="card-title">Title: Nordic Chair</h5>
+                        <h5 className="card-title">Title: {furniture.title} </h5>
                         <p>
                             <strong>ID:</strong> 001
                         </p>
                         <p>
-                            <strong>Type:</strong> Chair
+                            <strong>Type:</strong> {furniture.type}
                         </p>
                         <p>
-                            <strong>Price:</strong> $199.99
+                            <strong>Price:</strong> {furniture.price}
                         </p>
                         <p>
-                            <strong>Date:</strong> 2025-12-10
+                            <strong>Date:</strong> {furniture.date}
                         </p>
                         <p>
-                            <strong>Summary:</strong> A stylish and ergonomic Nordic chair designed
-                            for comfort and modern interiors.
+                            <strong>Summary:</strong> {furniture.summary}
                         </p>
                         {/* Action Buttons */}
                         <div className="d-flex justify-content-between mt-4">
