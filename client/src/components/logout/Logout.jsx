@@ -5,5 +5,5 @@ export default function Logout(
 ) {
     onLogout();
 
-    return <Navigate to="/" />;
+    return <Navigate to="/" />
 }

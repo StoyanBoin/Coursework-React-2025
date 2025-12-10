@@ -19,23 +19,23 @@ function App() {
     const [user, setUser] = useState(null);
 
     const registerHandler = (username, email, password) => {
-        if (registeredUsers.find(u => u.email === email)) {
+        if (registeredUsers.some(u => u.email === email)) {
             throw new Error("User with this email already exists.");
         }
 
         const newUser = { username, email, password };
 
-        setRegisteredUsers(prevUsers => [...prevUsers,  newUser]);
+        setRegisteredUsers(state => [...state, newUser]);
 
         setUser(newUser);
     };
 
-    const loginHandler = (email, password) => {
+    const loginHandler = (username, email, password) => {
         const user = registeredUsers.find(u => u.email === email && u.password === password);
         if (!user) {
             throw new Error("No user found with this email.");
         }
-        
+
         setUser(user);
     }
 

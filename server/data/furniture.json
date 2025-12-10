@@ -5,7 +5,7 @@
         "type": "Chair",
         "price": "$50.00",
         "date": "2022-05-19",
-        "imageUrl": "/data/images/product-1.png",
+        "imageUrl": "/images/product-1.png",
         "summary": "Seat and backrest frame: Plywood, Particleboard, Solid wood, MDF. Armrests - frame: Plywood, Particleboard, Polyurethane foam 25 kg/m3, Solid wood, MDF Back cushion: Polyurethane foam 25 kg/m3. Seat, cushion: Highly resilient polyurethane foam (resilient foam) 35 kg/m3. Fabric: 100% polyester (min. 90% recycled mat.). Leg: Solid oak, Oak veneer, Steel, Clear lacquer",
         "_createdOn": 1617194350000
     },
@@ -15,7 +15,7 @@
         "type": "Chair",
         "price": "$78.00",
         "date": "2021-02-09",
-        "imageUrl": "/data/images/product-2.png",
+        "imageUrl": "/images/product-2.png",
         "summary": "Middle leg: Solid wood, Acrylic paint. Seat frame: Steel, Powder coating. Back frame: Steel. Support panel: Polyethylene plastic. Back cushion/ Seat cushion: 100% polyester. Lining: Polyester wadding. Back material: 100% polyester (100% recycled). Total composition: 100% polyester",
         "_createdOn": 1645708800000
     },
@@ -25,7 +25,7 @@
         "type": "Chair",
         "price": "$43.00",
         "date": "2015-11-11",
-        "imageUrl": "/data/images/product-3.png",
+        "imageUrl": "/images/product-3.png",
         "summary": "Main material: 100% polypropylene. Frame: Laminated wood veneer, Birch veneer, Clear acrylic lacquer. Fabric: 100% polyester (min. 90% recycled). Wading: 100% polyester (min. 80% recycled). Comfort filling: Polyurethane foam 30 kg/m3. Lining, underside: 100% polypropylene",
         "_createdOn": 1617194450000
     },
@@ -35,7 +35,7 @@
         "type": "Armchair",
         "price": "$150.00",
         "date": "2016-01-14",
-        "imageUrl": "/data/images/sofa1.png",
+        "imageUrl": "/images/sofa1.png",
         "summary": "Frame: Plywood, Polyurethane foam 20 kg/cu.m., Particleboard, Solid wood, Laminated wood veneer, MDF Lining: 100% polypropylene. Back cushion: 30% molded polyurethane foam/ 70% polyester fibers. Clip: Polypropylene plastic. Seat cushion: Highly resilient polyurethane foam (resilient foam) 35 kg/cu.m. Backing fabric: 100% polyester (100% recycled material). Armrest frame: Particleboard, Plywood, Laminated wood veneer, Polyurethane foam 25 kg/cu.m., Polyurethane foam 20 kg/cu.m., MDF Lining: 100% polypropylene. Middle leg: Polypropylene plastic. Fabric: 100% polyester (min. 90% recycled material). Fabric, Backing: 100% polyester (100% recycled material) Armrest cover: 100% polyester (min. 90% recycled material)",
         "_createdOn": 1607558400000
     },
@@ -45,7 +45,7 @@
         "type": "Armchair",
         "price": "$110.00",
         "date": "2023-07-06",
-        "imageUrl": "/data/images/angle.png",
+        "imageUrl": "/images/angle.png",
         "summary": "Seat and backrest frame: Plywood, Particleboard, Solid wood, MDF Armrests - frame: Plywood, Particleboard, Polyurethane foam 25 kg/m3, Solid wood, MDF Back cushion: Polyurethane foam 25 kg/m3. Seat, cushion: Highly resilient polyurethane foam (resilient foam) 35 kg/m3. Fabric: 100% polyester (min. 90% recycled mat.). Leg: Solid oak, Oak veneer, Steel, Clear lacquer",
         "_createdOn": 1763062681528
     }

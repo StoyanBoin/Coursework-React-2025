@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 export default function Header() {
     return (
         <header>
@@ -11,22 +13,22 @@ export default function Header() {
                     </button>
 
                     <div className="collapse navbar-collapse" id="navbarsFurni">
-                        <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/">Home</a>
+                        <ul className="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/">Home</Link>
                             </li>
-                            <li><a class="nav-link" href="/shop">Shop</a></li>
-                            <li><a class="nav-link" href="/about">About us</a></li>
-                            <li><a class="nav-link" href="/blog">Blog</a></li>
-                            <li><a class="nav-link" href="/contact">Contact us</a></li>
-                            <li><a class="nav-link" href="/login">Login</a></li>
-                            <li><a class="nav-link" href="/register">Register</a></li>
-                            <li><a class="nav-link" href="/logout">Logout</a></li>
+                            <li><Link className="nav-link" to="/shop">Shop</Link></li>
+                            <li><Link className="nav-link" to="/about">About us</Link></li>
+                            <li><Link className="nav-link" to="/blog">Blog</Link></li>
+                            <li><Link className="nav-link" to="/contact">Contact us</Link></li>
+                            <li><Link className="nav-link" to="/login">Login</Link></li>
+                            <li><Link className="nav-link" to="/register">Register</Link></li>
+                            <li><Link className="nav-link" to="/logout">Logout</Link></li>
                         </ul>
 
                         <ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-                            <li><a className="nav-link" href="/"><img src="images/user.svg" /></a></li>
-                            <li><a className="nav-link" href="/cart"><img src="images/cart.svg" /></a></li>
+                            <li><Link className="nav-link" to="/"><img src="images/user.svg" /></Link></li>
+                            <li><Link className="nav-link" to="/cart"><img src="images/cart.svg" /></Link></li>
 
                         </ul>
                     </div>

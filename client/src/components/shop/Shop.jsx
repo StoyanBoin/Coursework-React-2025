@@ -1,4 +1,27 @@
+import { useEffect, useState } from "react";
+import Furniture from "../furniture/Furniture.jsx";
+
+const BASE_URL = 'http://localhost:3030/jsonstore/furniture';
+
 export default function Shop() {
+    const [furnitureData, setFurnitureData] = useState([]);
+
+    useEffect(() => {
+    (async () => {
+        try {
+            const response = await fetch(BASE_URL);
+            if (!response.ok) {
+                throw new Error('Failed to fetch furniture data');
+            }
+            const result = await response.json();
+            setFurnitureData(Object.values(result));        
+        } catch (err) {
+            alert(err.message);
+        }
+    })();
+    }, []);
+
+
     return (
         <>
             {/* <!-- Start Hero Section --> */}
@@ -36,6 +59,9 @@ export default function Shop() {
             <div className="untree_co-section product-section before-footer-section">
                 <div className="container">
                     <div className="row">
+
+                        {furnitureData.map(furniture => <Furniture key={furniture._id} {...furniture} />)}  
+
                         {/* Start Column 1 */}
                         <div className="col-12 col-md-4 col-lg-3 mb-5">
                             <a className="product-item" href="#">

@@ -18,11 +18,11 @@ export default function Register({
         if (password !== confirmPassword) {
             return alert("Passwords missmatch!");
         }
-        onRegister({ 
-            username, 
+        onRegister(
+            username,
             email,
-            password
-        });
+            password,
+        );
 
         navigate("/");
     }
