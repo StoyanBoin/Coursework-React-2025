@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 export default function Furniture({
     _id,
     title,
@@ -6,7 +8,7 @@ export default function Furniture({
 }) {
     return (
         <div className="col-12 col-md-4 col-lg-3 mb-5">
-            <a className="product-item" href="#">
+            <Link className="product-item" to={`/shop/${_id}/details`}>
                 <img
                     src={imageUrl}
                     className="img-fluid product-thumbnail"
@@ -16,7 +18,7 @@ export default function Furniture({
                 <span className="icon-cross">
                     <img src="images/cross.svg" className="img-fluid" />
                 </span>
-            </a>
+            </Link>
         </div>
     );
 }

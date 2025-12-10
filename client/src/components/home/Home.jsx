@@ -1,3 +1,4 @@
+import React from "react";
 import HomeBlog from "../blog/HomeBlog.jsx";
 import Hero from "../hero/Hero.jsx";
 import Choose from "../info/Choose.jsx";
@@ -6,10 +7,11 @@ import PopularProduct from "../product/PopularProduct.jsx";
 import Product from "../product/Product.jsx";
 
 export default function Home() {
+
+
     return (
         <>
             <Hero />
-            <Product />
             <Choose />
             <Help />
             <PopularProduct />
