@@ -57,9 +57,7 @@ export default function Details() {
                     />
                     <div className="card-body">
                         <h5 className="card-title">Title: {furniture.title} </h5>
-                        <p>
-                            <strong>ID:</strong> 001
-                        </p>
+                        
                         <p>
                             <strong>Type:</strong> {furniture.type}
                         </p>

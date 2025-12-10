@@ -1,3 +1,5 @@
+import{ Link } from "react-router";
+
 export default function NewFurniture({
     _id,
     title,
@@ -18,7 +20,7 @@ export default function NewFurniture({
                 <div className="pt-3">
                     <h3>{title}</h3>
                     <p>{shortSummary} </p>
-                    <p><a href="#">Read More</a></p>
+                    <p><Link to={`/shop/${_id}/details`}>Read More</Link></p>
                 </div>
             </div>
         </div>
