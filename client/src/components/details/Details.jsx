@@ -72,7 +72,7 @@ export default function Details() {
                         </p>
                         {/* Action Buttons */}
                         <div className="d-flex justify-content-between mt-4">
-                            <Link to="/edit/001" className="btn btn-warning">
+                            <Link to={`/shop/${id}/edit`} className="btn btn-warning">
                                 Edit
                             </Link>
                             {/* <Link href={`/shop/${id}/delete`} className="btn btn-warning">Delete</Link> */}

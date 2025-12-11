@@ -12,7 +12,8 @@ import Login from "./components/login/Login.jsx"
 import Register from "./components/register/Register.jsx"
 import Cart from "./components/cart/Cart.jsx"
 import Logout from "./components/logout/Logout.jsx"
-import Details from "./details/Details.jsx"
+import Details from "./components/details/Details.jsx"
+import Edit from "./components/edit/Edit.jsx"
 
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/shop" element={<Shop />} />
                 <Route path="/shop/:id/details" element={<Details />} />
+                <Route path="/shop/:id/edit" element={<Edit />} />
                 <Route path="/create" element={<Create />} />
                 <Route path="/about" element={<AboutUs />} />
                 <Route path="/blog" element={<Blog />} />
