@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 export default function Login(
     onLogin,
@@ -10,6 +10,7 @@ export default function Login(
         e.preventDefault();
         const formData = new FormData(e.target);
 
+        const username = formData.get("username");
         const email = formData.get("email");
         const password = formData.get("password");
 
@@ -18,6 +19,7 @@ export default function Login(
         }
         try {
             onLogin({
+                username,
                 email,
                 password
             });
@@ -51,7 +53,6 @@ export default function Login(
                 <h2 className="mb-4 text-center">Login</h2>
                 <form
                     action={loginHandler}
-                    method="POST"
                     className="mx-auto"
                     style={{ maxWidth: 400 }}
                 >
@@ -85,7 +86,7 @@ export default function Login(
                 </form>
                 <div className="text-center mt-3">
                     <p>
-                        Don't have an account? <a href="/register">Register here</a>
+                        Don't have an account? <Link to="/register">Register here</Link>
                     </p>
                 </div>
             </div>

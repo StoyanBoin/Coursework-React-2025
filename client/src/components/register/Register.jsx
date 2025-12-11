@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 export default function Register({
     onRegister,
@@ -18,13 +18,17 @@ export default function Register({
         if (password !== confirmPassword) {
             return alert("Passwords missmatch!");
         }
-        onRegister(
-            username,
-            email,
-            password,
-        );
+        try {
+            onRegister(
+                username,
+                email,
+                password,
+            );
 
-        navigate("/");
+            navigate("/");
+        } catch (err) {
+            return alert(err.message);
+        }
     }
 
     return (
@@ -107,7 +111,7 @@ export default function Register({
                 </form>
                 <div className="text-center mt-3">
                     <p>
-                        Already have an account? <a href="/login">Login here</a>
+                        Already have an account? <Link to="/login">Login here</Link>
                     </p>
                 </div>
             </div>
