@@ -14,6 +14,7 @@ import Cart from "./components/cart/Cart.jsx"
 import Logout from "./components/logout/Logout.jsx"
 import Details from "./components/details/Details.jsx"
 import Edit from "./components/edit/Edit.jsx"
+import UserContext from "./context/UserContext.js"
 
 
 
@@ -46,9 +47,16 @@ function App() {
         setUser(null);
     }
 
+    const userContextValue = {
+        user,
+        isAuthenticated: !!user?.accessToken,
+        registerHandler,
+        loginHandler,
+        logoutHandler,
+    };
 
     return (
-        <>
+        <UserContext.Provider value={userContextValue}>
             <Header user={user} />
 
             <Routes>
@@ -61,13 +69,13 @@ function App() {
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/contact" element={<ContactUs />} />
                 <Route path="/login" element={<Login onLogin={loginHandler} />} />
-                <Route path="/register" element={<Register onRegister={registerHandler} />} />
+                <Route path="/register" element={<Register />} />
                 <Route path="/logout" element={<Logout onLogout={logoutHandler} />} />
                 <Route path="/cart" element={<Cart />} />
             </Routes>
 
             <Footer />
-        </>
+        </UserContext.Provider>
     )
 }
 
