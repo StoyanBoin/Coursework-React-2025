@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { Route, Routes } from "react-router"
 import Header from "./components/header/Header.jsx"
 import Footer from "./components/footer/Footer.jsx"
@@ -14,68 +13,33 @@ import Cart from "./components/cart/Cart.jsx"
 import Logout from "./components/logout/Logout.jsx"
 import Details from "./components/details/Details.jsx"
 import Edit from "./components/edit/Edit.jsx"
-import UserContext from "./context/UserContext.js"
-
+import UserContext, { UserProvider } from "./context/UserContext.jsx"
+import { useContext } from "react"
 
 
 function App() {
-    const [user, setUser] = useState(null);
-
-    const registerHandler = async (username, email, password) => {
-        const newUser = { username, email, password };
-        const response = await fetch('http://localhost:3030/users/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(newUser),
-        });
-        const result = await response.json();
-
-        setUser(result);
-    };
-
-    const loginHandler = async (username, email, password) => {
-        if (!user) {
-            throw new Error("No user found with this email.");
-        }
-
-        setUser(user);
-    }
-
-    const logoutHandler = () => {
-        setUser(null);
-    }
-
-    const userContextValue = {
-        user,
-        isAuthenticated: !!user?.accessToken,
-        registerHandler,
-        loginHandler,
-        logoutHandler,
-    };
-
+    const { user } = useContext(UserContext)
     return (
-        <UserContext.Provider value={userContextValue}>
+        <>
             <Header user={user} />
 
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/shop" element={<Shop />} />
-                <Route path="/shop/:id/details" element={<Details />} />
+                <Route path="/shop/:id/details" element={<Details user={user} />} />
                 <Route path="/shop/:id/edit" element={<Edit />} />
                 <Route path="/create" element={<Create />} />
                 <Route path="/about" element={<AboutUs />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/contact" element={<ContactUs />} />
-                <Route path="/login" element={<Login onLogin={loginHandler} />} />
+                <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
-                <Route path="/logout" element={<Logout onLogout={logoutHandler} />} />
+                <Route path="/logout" element={<Logout />} />
                 <Route path="/cart" element={<Cart />} />
             </Routes>
 
             <Footer />
-        </UserContext.Provider>
+        </>
     )
 }
 

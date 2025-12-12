@@ -1,25 +1,20 @@
 import { Link, useNavigate } from "react-router";
+import useForm from "../../hooks/useForm.js";
+import { useContext } from "react";
+import UserContext from "../../context/UserContext.jsx";
 
-export default function Login(
-    onLogin,
-) {
+export default function Login() {
 
     const navigate = useNavigate();
+    const { loginHandler } = useContext(UserContext);
 
-    const loginHandler = (e) => {
-        e.preventDefault();
-        const formData = new FormData(e.target);
-
-        const username = formData.get("username");
-        const email = formData.get("email");
-        const password = formData.get("password");
+    const loginSubmitHandler = async ({ email, password }) => {
 
         if (!email || !password) {
             return alert("All fields are required!");
         }
         try {
-            onLogin({
-                username,
+            await loginHandler({
                 email,
                 password
             });
@@ -30,6 +25,14 @@ export default function Login(
             return;
         }
     }
+
+    const {
+        register,
+        formAction,
+    } = useForm(loginSubmitHandler, {
+        email: '',
+        password: '',
+    });
 
     return (
         <>
@@ -52,7 +55,7 @@ export default function Login(
             <div className="container mt-5">
                 <h2 className="mb-4 text-center">Login</h2>
                 <form
-                    action={loginHandler}
+                    action={formAction}
                     className="mx-auto"
                     style={{ maxWidth: 400 }}
                 >
@@ -63,9 +66,8 @@ export default function Login(
                         <input
                             type="email"
                             className="form-control"
-                            id="email"
-                            name="email"
                             required=""
+                            {...register('email')}
                         />
                     </div>
                     <div className="mb-3">
@@ -75,9 +77,8 @@ export default function Login(
                         <input
                             type="password"
                             className="form-control"
-                            id="password"
-                            name="password"
                             required=""
+                            {...register('password')}
                         />
                     </div>
                     <button type="submit" className="btn btn-dark w-100">

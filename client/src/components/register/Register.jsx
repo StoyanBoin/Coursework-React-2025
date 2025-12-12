@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router";
-import useForm from "../../hooks/useForm.jsx";
+import useForm from "../../hooks/useForm.js";
 import { useContext } from "react";
-import UserContext from "../../context/UserContext.js";
+import UserContext from "../../context/UserContext.jsx";
 
 
 export default function Register() {
@@ -75,8 +75,6 @@ export default function Register() {
                         <input
                             type="text"
                             className="form-control"
-                            id="username"
-                            name="username"
                             required=""
                             {...register('username')}
                         />
@@ -89,7 +87,6 @@ export default function Register() {
                             type="email"
                             className="form-control"
                             id="email"
-                            name="email"
                             required=""
                             {...register('email')}
                         />
@@ -102,7 +99,6 @@ export default function Register() {
                             type="password"
                             className="form-control"
                             id="password"
-                            name="password"
                             required=""
                             {...register('password')}
                         />
@@ -115,7 +111,6 @@ export default function Register() {
                             type="password"
                             className="form-control"
                             id="confirmPassword"
-                            name="confirmPassword"
                             required=""
                             {...register('confirmPassword')}
                         />
