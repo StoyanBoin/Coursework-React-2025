@@ -1,15 +1,14 @@
 import { Link, useNavigate } from "react-router";
+import useForm from "../../hooks/useForm.jsx";
+
 
 export default function Register({
     onRegister,
 }) {
     const navigate = useNavigate();
 
-    const registerSubmitHandler = (formData) => {
-        const username = formData.get("username");
-        const email = formData.get("email");
-        const password = formData.get("password");
-        const confirmPassword = formData.get("confirmPassword");
+    const registerSubmitHandler = async (values) => {
+        const { username, email, password, confirmPassword } = values;
 
         if (!username || !email || !password) {
             return alert("All fields are required!");
@@ -19,7 +18,7 @@ export default function Register({
             return alert("Passwords missmatch!");
         }
         try {
-            onRegister(
+            await onRegister(
                 username,
                 email,
                 password,
@@ -30,6 +29,17 @@ export default function Register({
             return alert(err.message);
         }
     }
+
+    const {
+        register,
+        formAction,
+    } = useForm(registerSubmitHandler, {
+        username: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+    });
+
 
     return (
         <>
@@ -52,7 +62,7 @@ export default function Register({
             <div className="container mt-5">
                 <h2 className="mb-4 text-center">Register</h2>
                 <form
-                    action={registerSubmitHandler}
+                    action={formAction}
                     method="POST"
                     className="mx-auto"
                     style={{ maxWidth: 500 }}
@@ -67,6 +77,7 @@ export default function Register({
                             id="username"
                             name="username"
                             required=""
+                            {...register('username')}
                         />
                     </div>
                     <div className="mb-3">
@@ -79,6 +90,7 @@ export default function Register({
                             id="email"
                             name="email"
                             required=""
+                            {...register('email')}
                         />
                     </div>
                     <div className="mb-3">
@@ -91,6 +103,7 @@ export default function Register({
                             id="password"
                             name="password"
                             required=""
+                            {...register('password')}
                         />
                     </div>
                     <div className="mb-3">
@@ -103,6 +116,7 @@ export default function Register({
                             id="confirmPassword"
                             name="confirmPassword"
                             required=""
+                            {...register('confirmPassword')}
                         />
                     </div>
                     <button type="submit" className="btn btn-dark w-100">

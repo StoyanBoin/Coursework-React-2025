@@ -16,24 +16,25 @@ import Details from "./components/details/Details.jsx"
 import Edit from "./components/edit/Edit.jsx"
 
 
+
 function App() {
-    const [registeredUsers, setRegisteredUsers] = useState([]);
     const [user, setUser] = useState(null);
 
-    const registerHandler = (username, email, password) => {
-        if (registeredUsers.some(u => u.email === email)) {
-            throw new Error("User with this email already exists.");
-        }
-
+    const registerHandler = async (username, email, password) => {
         const newUser = { username, email, password };
+        const response = await fetch('http://localhost:3030/users/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newUser),
+        });
+        const result = await response.json();
 
-        setRegisteredUsers(state => [...state, newUser]);
-
-        setUser(newUser);
+        setUser(result);
     };
 
-    const loginHandler = (username, email, password) => {
-        const user = registeredUsers.find(u => u.email === email && u.password === password);
+    const loginHandler = async (username, email, password) => {
         if (!user) {
             throw new Error("No user found with this email.");
         }
