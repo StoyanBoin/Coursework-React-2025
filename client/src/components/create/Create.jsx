@@ -27,6 +27,7 @@ export default function Create() {
         registerFild,
         formAction,
     } = useForm(createFurnitureHandler, {
+        _id: '',
         title: '',
         type: '',
         price: '',
