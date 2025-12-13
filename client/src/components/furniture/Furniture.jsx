@@ -14,7 +14,7 @@ export default function Furniture({
                     className="img-fluid product-thumbnail"
                 />
                 <h3 className="product-title">{title}</h3>
-                <strong className="product-price">{price}</strong>
+                <strong className="product-price">${price}</strong>
                 <span className="icon-cross">
                     <img src="images/cross.svg" className="img-fluid" />
                 </span>

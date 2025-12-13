@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
+import { useUserContext } from "../../context/UserContext.jsx";
 
 export default function Details() {
+    const { isAuthenticated } = useUserContext();
     const navigate = useNavigate();
     const { id } = useParams();
     const [furniture, setFurniture] = useState({});
@@ -57,7 +59,7 @@ export default function Details() {
                     />
                     <div className="card-body">
                         <h5 className="card-title">Title: {furniture.title} </h5>
-                        
+
                         <p>
                             <strong>Type:</strong> {furniture.type}
                         </p>
@@ -71,18 +73,28 @@ export default function Details() {
                             <strong>Summary:</strong> {furniture.summary}
                         </p>
                         {/* Action Buttons */}
-                        <div className="d-flex justify-content-between mt-4">
-                            <Link to={`/shop/${id}/edit`} className="btn btn-warning">
-                                Edit
-                            </Link>
-                            {/* <Link href={`/shop/${id}/delete`} className="btn btn-warning">Delete</Link> */}
-                            <button
-                                onClick={deleteFurniture}
-                                className="btn btn-danger"
-                            >
-                                Delete
-                            </button>
-                        </div>
+
+                        {isAuthenticated
+                            ? (
+                                <div className="d-flex justify-content-between mt-4">
+                                    <Link to={`/shop/${id}/edit`} className="btn btn-warning">
+                                        Edit
+                                    </Link>
+                                    
+                                    <button
+                                        onClick={deleteFurniture}
+                                        className="btn btn-danger"
+                                    >
+                                        Delete
+                                    </button>
+                                </div>
+                            )
+                            :
+                            (
+                                <p></p>
+                            )
+                        }
+
                     </div>
                 </div>
             </div >
