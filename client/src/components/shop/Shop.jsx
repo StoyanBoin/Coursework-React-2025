@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import Furniture from "../furniture/Furniture.jsx";
+import { useUserContext } from "../../context/UserContext.jsx";
 
 const BASE_URL = 'http://localhost:3030/jsonstore/furniture';
 
 export default function Shop() {
+    const {isAuthenticated} = useUserContext();
     const [furnitureData, setFurnitureData] = useState([]);
 
     useEffect(() => {
@@ -35,10 +37,20 @@ export default function Shop() {
                                     Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet
                                     velit. Aliquam vulputate velit imperdiet dolor tempor tristique.
                                 </p>
-                                <p>
-                                    <a href="/create" className="btn btn-secondary me-2">
+                                <p> 
+                                    {isAuthenticated 
+                                        ? (
+                                        <a href="/create" className="btn btn-secondary me-2">
                                         Create Now
-                                    </a>
+                                        </a>
+                                        )
+                                        : (
+                                        <a href="/login" className="btn btn-secondary me-2">
+                                        Login to Create
+                                        </a>
+                                        )
+                                    }
+                                    
                                     {/* <a href="#" className="btn btn-white-outline">
                                         Explore
                                     </a> */}
