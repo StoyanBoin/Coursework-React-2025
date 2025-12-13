@@ -24,6 +24,7 @@ export default function Header() {
                             {isAuthenticated
                                 ? (
                                     <>
+                                        <li><Link className="nav-link" to="/create">Create</Link></li>
                                         <li><Link className="nav-link" to="/blog">Blog</Link></li>
                                         <li><Link className="nav-link" to="/logout">Logout</Link></li>
                                     </>

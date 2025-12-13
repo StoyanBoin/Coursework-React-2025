@@ -1,26 +1,28 @@
 import { useEffect, useState } from "react";
 import Furniture from "../furniture/Furniture.jsx";
 import { useUserContext } from "../../context/UserContext.jsx";
+import { Link } from "react-router";
+
 
 const BASE_URL = 'http://localhost:3030/jsonstore/furniture';
 
 export default function Shop() {
-    const {isAuthenticated} = useUserContext();
+    const { isAuthenticated } = useUserContext();
     const [furnitureData, setFurnitureData] = useState([]);
 
     useEffect(() => {
-    (async () => {
-        try {
-            const response = await fetch(BASE_URL);
-            if (!response.ok) {
-                throw new Error('Failed to fetch furniture data');
+        (async () => {
+            try {
+                const response = await fetch(BASE_URL);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch furniture data');
+                }
+                const result = await response.json();
+                setFurnitureData(Object.values(result));
+            } catch (err) {
+                alert(err.message);
             }
-            const result = await response.json();
-            setFurnitureData(Object.values(result));        
-        } catch (err) {
-            alert(err.message);
-        }
-    })();
+        })();
     }, []);
 
 
@@ -37,20 +39,16 @@ export default function Shop() {
                                     Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet
                                     velit. Aliquam vulputate velit imperdiet dolor tempor tristique.
                                 </p>
-                                <p> 
-                                    {isAuthenticated 
+                                <p>
+                                    {isAuthenticated
                                         ? (
-                                        <a href="/create" className="btn btn-secondary me-2">
-                                        Create Now
-                                        </a>
+                                            <Link to="/create" className="btn btn-secondary me-2">Create Now</Link>
                                         )
                                         : (
-                                        <a href="/login" className="btn btn-secondary me-2">
-                                        Login to Create
-                                        </a>
+                                            <Link to="/login" className="btn btn-secondary me-2">Login to Create</Link>
                                         )
                                     }
-                                    
+
                                     {/* <a href="#" className="btn btn-white-outline">
                                         Explore
                                     </a> */}
@@ -74,7 +72,7 @@ export default function Shop() {
 
                         {furnitureData.length === 0 && <p className="no-furniture">No furniture available.</p>}
 
-                        {furnitureData.map(furniture => <Furniture key={furniture._id} {...furniture} />)}  
+                        {furnitureData.map(furniture => <Furniture key={furniture._id} {...furniture} />)}
 
                     </div>
                 </div>
