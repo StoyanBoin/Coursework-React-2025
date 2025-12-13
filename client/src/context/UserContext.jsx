@@ -1,5 +1,5 @@
-import { createContext, useState } from "react";
-import useRequest from "../hooks/useRequest.js";
+import { createContext, useContext, useState } from "react";
+import useRequest from "../hooks/useRequest.jsx";
 
 const UserContext = createContext({
     isAuthenticated: false,
@@ -16,28 +16,28 @@ const UserContext = createContext({
     logoutHandler: () => { },
 });
 
-export function UserProvider({ 
-    children, 
+export function UserProvider({
+    children,
 }) {
     const [user, setUser] = useState(null);
     const { request } = useRequest();
 
-    const registerHandler = async (email, password) => {
-        const newUser = { email, password };
+    const registerHandler = async (username, email, password) => {
+        const newUser = { username, email, password };
 
-        const result = await request('/users/register', 'POST', newUser);
+        const result = await request('http://localhost:3030/users/register', 'POST', newUser);
 
         setUser(result);
     };
 
     const loginHandler = async (email, password) => {
-        const result = await request(`/users/login`, 'POST', { email, password });
+        const result = await request('http://localhost:3030/users/login', 'POST', { email, password });
 
         setUser(result);
     }
 
     const logoutHandler = () => {
-        return request('/users/logout')
+        return request('http://localhost:3030/users/logout', 'GET', null, { accessToken: user?.accessToken })
             .finally(() => setUser(null));
     }
 
@@ -55,5 +55,16 @@ export function UserProvider({
         </UserContext.Provider>
     );
 }
+
+export function useUserContext() {
+    const context = useContext(UserContext);
+
+    if (context === undefined) {
+        throw new Error('useUserContext must be used within a UserProvider');
+    }
+
+    return context;
+}
+
 
 export default UserContext;

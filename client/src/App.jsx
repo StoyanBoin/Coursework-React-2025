@@ -13,12 +13,13 @@ import Cart from "./components/cart/Cart.jsx"
 import Logout from "./components/logout/Logout.jsx"
 import Details from "./components/details/Details.jsx"
 import Edit from "./components/edit/Edit.jsx"
-import UserContext, { UserProvider } from "./context/UserContext.jsx"
+import UserContext from "./context/UserContext.jsx"
 import { useContext } from "react"
 
 
 function App() {
     const { user } = useContext(UserContext)
+    
     return (
         <>
             <Header user={user} />

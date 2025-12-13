@@ -1,6 +1,10 @@
 import { Link } from "react-router";
+import { useUserContext } from "../../context/UserContext.jsx";
 
 export default function Header() {
+
+    const { isAuthenticated } = useUserContext();
+
     return (
         <header>
             <nav className="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
@@ -18,12 +22,24 @@ export default function Header() {
                                 <Link className="nav-link" to="/">Home</Link>
                             </li>
                             <li><Link className="nav-link" to="/shop">Shop</Link></li>
-                            <li><Link className="nav-link" to="/about">About us</Link></li>
-                            <li><Link className="nav-link" to="/blog">Blog</Link></li>
-                            <li><Link className="nav-link" to="/contact">Contact us</Link></li>
-                            <li><Link className="nav-link" to="/login">Login</Link></li>
-                            <li><Link className="nav-link" to="/register">Register</Link></li>
-                            <li><Link className="nav-link" to="/logout">Logout</Link></li>
+                            {isAuthenticated
+                                ? (
+                                    <>
+                                        <li><Link className="nav-link" to="/blog">Blog</Link></li>
+                                        <li><Link className="nav-link" to="/logout">Logout</Link></li>
+                                    </>
+                                ) :
+                                (
+                                    <>
+                                        <li><Link className="nav-link" to="/about">About us</Link></li>
+                                        <li><Link className="nav-link" to="/register">Register</Link></li>
+                                        <li><Link className="nav-link" to="/login">Login</Link></li>
+                                        <li><Link className="nav-link" to="/contact">Contact us</Link></li>
+                                    </>
+                                )
+
+                            }
+
                         </ul>
 
                         <ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">

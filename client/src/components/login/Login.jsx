@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router";
-import useForm from "../../hooks/useForm.js";
+import useForm from "../../hooks/useForm.jsx";
 import { useContext } from "react";
 import UserContext from "../../context/UserContext.jsx";
 
@@ -27,7 +27,7 @@ export default function Login() {
     }
 
     const {
-        register,
+        registerFild,
         formAction,
     } = useForm(loginSubmitHandler, {
         email: '',
@@ -66,8 +66,9 @@ export default function Login() {
                         <input
                             type="email"
                             className="form-control"
+                            id="email"
                             required=""
-                            {...register('email')}
+                            {...registerFild('email')}
                         />
                     </div>
                     <div className="mb-3">
@@ -77,8 +78,9 @@ export default function Login() {
                         <input
                             type="password"
                             className="form-control"
+                            id="password"
                             required=""
-                            {...register('password')}
+                            {...registerFild('password')}
                         />
                     </div>
                     <button type="submit" className="btn btn-dark w-100">

@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router";
-import useForm from "../../hooks/useForm.js";
+import useForm from "../../hooks/useForm.jsx";
 import { useContext } from "react";
 import UserContext from "../../context/UserContext.jsx";
 
@@ -32,7 +32,7 @@ export default function Register() {
     }
 
     const {
-        register,
+        registerFild,
         formAction,
     } = useForm(registerSubmitHandler, {
         username: '',
@@ -64,7 +64,6 @@ export default function Register() {
                 <h2 className="mb-4 text-center">Register</h2>
                 <form
                     action={formAction}
-                    method="POST"
                     className="mx-auto"
                     style={{ maxWidth: 500 }}
                 >
@@ -75,8 +74,9 @@ export default function Register() {
                         <input
                             type="text"
                             className="form-control"
+                            id="username"
                             required=""
-                            {...register('username')}
+                            {...registerFild('username')}
                         />
                     </div>
                     <div className="mb-3">
@@ -88,7 +88,7 @@ export default function Register() {
                             className="form-control"
                             id="email"
                             required=""
-                            {...register('email')}
+                            {...registerFild('email')}
                         />
                     </div>
                     <div className="mb-3">
@@ -100,7 +100,7 @@ export default function Register() {
                             className="form-control"
                             id="password"
                             required=""
-                            {...register('password')}
+                            {...registerFild('password')}
                         />
                     </div>
                     <div className="mb-3">
@@ -112,7 +112,7 @@ export default function Register() {
                             className="form-control"
                             id="confirmPassword"
                             required=""
-                            {...register('confirmPassword')}
+                            {...registerFild('confirmPassword')}
                         />
                     </div>
                     <button type="submit" className="btn btn-dark w-100">

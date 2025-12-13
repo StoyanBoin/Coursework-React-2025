@@ -13,7 +13,7 @@ export default function useForm(callback, initialValues) {
         callback(values, formData);
     };
 
-    const register = (fieldName) => {
+    const registerFild = (fieldName) => {
         return {
             name: fieldName,
             onChange: changeHandler,
@@ -25,6 +25,6 @@ export default function useForm(callback, initialValues) {
         values,
         changeHandler,
         formAction,
-        register,
+        registerFild,
     }
 }

@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import UserContext from "../context/UserContext.jsx";
 
-const baseUrl = 'http://localhost:3030';
+// const baseUrl = 'http://localhost:3030';
 
 export default function useRequest() {
     const { user, isAuthenticated } = useContext(UserContext)
 
-    const request = async (url, method, data) => {
+    const request = async (url, method, data, confic = {}) => {
         let options = {};
 
         if (method) {
@@ -15,20 +15,21 @@ export default function useRequest() {
 
         if (data) {
             options.headers = {
-                'Content-Type': 'application/json',
+                'content-type': 'application/json',
             };
 
             options.body = JSON.stringify(data);
         }
 
-        if (isAuthenticated) {
+        if (confic.accessToken || isAuthenticated) {
             options.headers = {
                 ...options.headers,
-                'X-Authorization': user.accessToken,
+                'X-Authorization': confic.accessToken || user.accessToken,
             };
         }
-
-        const response = await fetch(`${baseUrl}${url}`, options);
+        console.log(user);
+        
+        const response = await fetch(url, options);
 
         if (!response.ok) {
             throw response.statusText;
