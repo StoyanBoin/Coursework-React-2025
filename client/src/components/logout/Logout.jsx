@@ -9,7 +9,7 @@ export default function Logout() {
     logoutHandler()
         .then(() => navigate("/"))
         .catch(() => {
-            alert("Logout failed!");
+            // alert("Logout failed!");
             navigate("/");
         });
     return null

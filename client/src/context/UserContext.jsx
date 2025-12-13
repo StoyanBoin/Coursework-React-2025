@@ -30,8 +30,8 @@ export function UserProvider({
         setUser(result);
     };
 
-    const loginHandler = async (email, password) => {
-        const result = await request('http://localhost:3030/users/login', 'POST', { email, password });
+    const loginHandler = async (user) => {
+        const result = await request('http://localhost:3030/users/login', 'POST', user);
 
         setUser(result);
     }
