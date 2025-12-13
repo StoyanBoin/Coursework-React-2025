@@ -6,7 +6,7 @@ import UserContext from "../context/UserContext.jsx";
 export default function useRequest() {
     const { user, isAuthenticated } = useContext(UserContext)
 
-    const request = async (url, method, data, confic = {}) => {
+    const request = async (url, method, data, config = {}) => {
         let options = {};
 
         if (method) {
@@ -21,14 +21,13 @@ export default function useRequest() {
             options.body = JSON.stringify(data);
         }
 
-        if (confic.accessToken || isAuthenticated) {
+        if (config.accessToken || isAuthenticated) {
             options.headers = {
                 ...options.headers,
-                'X-Authorization': confic.accessToken || user.accessToken,
+                'X-Authorization': config.accessToken || user.accessToken,
             };
         }
-        console.log(user);
-        
+
         const response = await fetch(url, options);
 
         if (!response.ok) {
@@ -42,9 +41,11 @@ export default function useRequest() {
         const result = await response.json();
 
         return result;
-    }
+    };
+    
 
     return {
         request,
+
     }
 }

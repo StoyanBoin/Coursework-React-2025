@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
 import Furniture from "../furniture/Furniture.jsx";
 import { useUserContext } from "../../context/UserContext.jsx";
 import { Link } from "react-router";
-
+import { useEffect, useState } from "react";
 
 const BASE_URL = 'http://localhost:3030/jsonstore/furniture';
 
@@ -15,16 +14,16 @@ export default function Shop() {
             try {
                 const response = await fetch(BASE_URL);
                 if (!response.ok) {
-                    throw new Error('Failed to fetch furniture data');
+                    throw new Error('Failed to fetch furniture data.');
                 }
                 const result = await response.json();
+
                 setFurnitureData(Object.values(result));
             } catch (err) {
                 alert(err.message);
             }
         })();
     }, []);
-
 
     return (
         <>
@@ -69,6 +68,7 @@ export default function Shop() {
             <div className="untree_co-section product-section before-footer-section">
                 <div className="container">
                     <div className="row">
+
 
                         {furnitureData.length === 0 && <p className="no-furniture">No furniture available.</p>}
 

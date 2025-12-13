@@ -1,27 +1,39 @@
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
+import useForm from "../../hooks/useForm.jsx";
+import useRequest from "../../hooks/useRequest.jsx";
 
 export default function Create() {
     const navigate = useNavigate();
+    const { request } = useRequest();
 
-    const createFurnitureHandler = async (e) => {
-        e.preventDefault();
+    const createFurnitureHandler = async (values) => {
+        const data = values;
 
-        const formData = new FormData(e.target);
-        const data = Object.fromEntries(formData);
+        data.price = Number(data.price);
+        data._createdOn = Date.now();
 
-        const result = await fetch('http://localhost:3030/jsonstore/furniture', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
+        try {
+            await request('http://localhost:3030/jsonstore/furniture', 'POST', data);
 
-        const resultData = await result.json();
-        console.log(resultData);
-
-        navigate('/shop');
+            navigate('/shop');
+        } 
+        catch (err) {
+            alert(err.message);
+        }
     }
+
+
+    const {
+        registerFild,
+        formAction,
+    } = useForm(createFurnitureHandler, {
+        title: '',
+        type: '',
+        price: '',
+        date: '',
+        imageURL: '',
+        summary: ''
+    });
 
     return (
         <>
@@ -43,44 +55,44 @@ export default function Create() {
             <div className="container mt-5 mb-5">
                 <h2 className="mb-4 text-center">Add New Item</h2>
                 <form
-                    onSubmit={createFurnitureHandler}
+                    action={formAction}
                     className="mx-auto"
                     style={{ maxWidth: 600 }}
                 >
                     {/* Title */}
                     <div className="mb-3">
                         <label htmlFor="title" className="form-label">Title</label>
-                        <input type="text" className="form-control" id="title" name="title" required />
+                        <input type="text" className="form-control" id="title" {...registerFild('title')} required />
                     </div>
 
                     {/* Type */}
                     <div className="mb-3">
                         <label htmlFor="type" className="form-label">Type</label>
-                        <input type="text" className="form-control" id="type" name="type" placeholder="e.g. Chair, Table" required />
+                        <input type="text" className="form-control" id="type" {...registerFild('type')} placeholder="e.g. Chair, Table" required />
                     </div>
 
                     {/* Price */}
                     <div className="mb-3">
                         <label htmlFor="price" className="form-label">Price</label>
-                        <input type="number" className="form-control" id="price" name="price" step="0.01" required />
+                        <input type="number" className="form-control" id="price" {...registerFild('price')} step="0.01" required />
                     </div>
 
                     {/* Date */}
                     <div className="mb-3">
                         <label htmlFor="date" className="form-label">Date</label>
-                        <input type="date" className="form-control" id="date" name="date" required />
+                        <input type="date" className="form-control" id="date" {...registerFild('date')} required />
                     </div>
 
                     {/* Image URL */}
                     <div className="mb-3">
                         <label htmlFor="imageURL" className="form-label">Image URL</label>
-                        <input type="url" className="form-control" id="imageURL" name="imageURL" placeholder="https://example.com/image.jpg" required />
+                        <input type="url" className="form-control" id="imageURL" {...registerFild('imageURL')} placeholder="https://example.com/image.jpg" required />
                     </div>
 
                     {/* Summary */}
                     <div className="mb-3">
                         <label htmlFor="summary" className="form-label">Summary</label>
-                        <textarea className="form-control" id="summary" name="summary" rows={4} placeholder="Write a short description..." required />
+                        <textarea className="form-control" id="summary" {...registerFild('summary')} rows={4} placeholder="Write a short description..." required />
                     </div>
 
                     {/* Submit Button */}
@@ -88,7 +100,7 @@ export default function Create() {
                 </form>
 
                 <div className="text-center mt-3">
-                    <p>Already have an account? <a href="/login">Login here</a></p>
+                    <p>Already have an account? <Link to="/login">Login here</Link></p>
                 </div>
             </div>
         </>
