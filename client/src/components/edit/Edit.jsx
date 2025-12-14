@@ -22,7 +22,6 @@ export default function Edit() {
         }));
     };
 
-
     useEffect(() => {
         request(`http://localhost:3030/jsonstore/furniture/${id}`)
             .then(result => {
