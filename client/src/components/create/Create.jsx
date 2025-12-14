@@ -12,11 +12,30 @@ export default function Create() {
         data.price = Number(data.price);
         data._createdOn = Date.now();
 
+        if (!data.title || !data.type || !data.price || !data.date || !data.imageUrl || !data.summary) {
+            return alert('All fields are required!');
+        }
+        if (data.price <= 0) {
+            return alert('Price must be a positive number!');
+        }
+        if (data.summary.length < 10) {
+            return alert('Summary must be at least 10 characters long!');
+        }
+        if (data.title.length < 4) {
+            return alert('Title must be at least 4 characters long!');
+        }
+        if (data.type.length < 3) {
+            return alert('Type must be at least 3 characters long!');
+        }
+        if (data.date > new Date().toISOString().split('T')[0]) {
+            return alert('Date cannot be in the future!');
+        }
+
         try {
             await request('http://localhost:3030/jsonstore/furniture', 'POST', data);
 
             navigate('/shop');
-        } 
+        }
         catch (err) {
             alert(err.message);
         }
