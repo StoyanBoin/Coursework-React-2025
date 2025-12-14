@@ -9,7 +9,7 @@ export default function PopularProduct() {
             .then(response => response.json())
             .then(result => {
                 const results = Object.values(result)
-                    .sort((a, b) => a._createdOn - b._createdOn)
+                    .sort((a, b) => b._createdOn - a._createdOn)
                     .slice(0, 3);
 
                     setNewProducts(results);

@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router"
+import { Route, Routes, Navigate } from "react-router"
 import Header from "./components/header/Header.jsx"
 import Footer from "./components/footer/Footer.jsx"
 import Home from "./components/home/Home.jsx"
@@ -18,7 +18,7 @@ import { useContext } from "react"
 
 
 function App() {
-    const { user } = useContext(UserContext)
+    const { user, isAuthenticated } = useContext(UserContext)
 
     return (
         <>
@@ -28,8 +28,8 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/shop" element={<Shop />} />
                 <Route path="/shop/:id/details" element={<Details user={user} />} />
-                <Route path="/shop/:id/edit" element={<Edit />} />
-                <Route path="/create" element={<Create />} />
+                {isAuthenticated ? (<Route path="/shop/:id/edit" element={<Edit user={user} />} />) : (<Route path="/shop/:id/edit" element={<Navigate to="/login" replace />} />)}
+                {isAuthenticated ? (<Route path="/create" element={<Create user={user} />} /> ) : (<Route path="/create" element={<Navigate to="/login" replace />} />)}
                 <Route path="/about" element={<AboutUs />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/contact" element={<ContactUs />} />
