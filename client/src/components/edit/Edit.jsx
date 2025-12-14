@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import request from "../utils/request.js";
 
 const initialValues = {
@@ -12,6 +12,7 @@ const initialValues = {
 };
 
 export default function Edit() {
+    const navigate = useNavigate();
     const { id } = useParams();
     const [furniture, setFurniture] = useState(initialValues);
 
@@ -32,15 +33,14 @@ export default function Edit() {
             })
     }, [id]);
 
-    const editFurnitureHandler = async (formData) => {
-        const furnitureData = Object.fromEntries(formData);
+    const editFurnitureHandler = async () => {
 
         try {
-            await request(`http://localhost:3030/jsonstore/shop/${id}`, "PUT", furnitureData);
+            await request(`http://localhost:3030/jsonstore/furniture/${id}`, "PUT", furniture);
         } catch (err) {
             alert(err.message);
         }
-
+        navigate(`/shop/${id}/details`);
     };
 
     return (
