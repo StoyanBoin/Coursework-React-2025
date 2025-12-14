@@ -32,7 +32,7 @@ export default function Create() {
         type: '',
         price: '',
         date: '',
-        imageURL: '',
+        imageUrl: '',
         summary: ''
     });
 
@@ -87,7 +87,7 @@ export default function Create() {
                     {/* Image URL */}
                     <div className="mb-3">
                         <label htmlFor="imageURL" className="form-label">Image URL</label>
-                        <input type="url" className="form-control" id="imageURL" {...registerFild('imageURL')} placeholder="https://example.com/image.jpg" required />
+                        <input type="url" className="form-control" id="imageURL" {...registerFild('imageUrl')} placeholder="https://example.com/image.jpg" required />
                     </div>
 
                     {/* Summary */}
