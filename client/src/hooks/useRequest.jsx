@@ -46,6 +46,5 @@ export default function useRequest() {
 
     return {
         request,
-
     }
 }

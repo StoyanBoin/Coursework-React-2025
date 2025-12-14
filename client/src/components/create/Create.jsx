@@ -2,7 +2,9 @@ import { Link, useNavigate } from "react-router";
 import useForm from "../../hooks/useForm.jsx";
 import useRequest from "../../hooks/useRequest.jsx";
 
-export default function Create() {
+export default function Create({
+    user,
+}) {
     const navigate = useNavigate();
     const { request } = useRequest();
 
@@ -11,6 +13,7 @@ export default function Create() {
 
         data.price = Number(data.price);
         data._createdOn = Date.now();
+        data._creatorId = user?._id;
 
         if (!data.title || !data.type || !data.price || !data.date || !data.imageUrl || !data.summary) {
             return alert('All fields are required!');
@@ -52,7 +55,7 @@ export default function Create() {
         price: '',
         date: '',
         imageUrl: '',
-        summary: ''
+        summary: '',
     });
 
     return (

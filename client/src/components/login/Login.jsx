@@ -21,7 +21,8 @@ export default function Login() {
 
             navigate("/");
         } catch (err) {
-            alert(err.message);
+            const result = err.message;
+            alert(result === undefined ? "Email and Password aren't correct!" : result);
             return;
         }
     }

@@ -9,7 +9,7 @@ const UserContext = createContext({
         email: '',
         password: '',
         _createdOn: '',
-        accessToken: ''
+        accessToken: '',
     },
     registerHandler: () => { },
     loginHandler: () => { },
