@@ -53,6 +53,9 @@ export default function Edit() {
         if (furniture.date > new Date().toISOString().split('T')[0]) {
             return alert('Date cannot be in the future!');
         }
+        if (furniture.imageUrl != '' && !/^https?:\/\/.+/i.test(furniture.imageUrl)) {
+            return alert('Image URL must start with http:// or https://');
+        }
 
         try {
             await request(`http://localhost:3030/jsonstore/furniture/${id}`, "PUT", furniture);

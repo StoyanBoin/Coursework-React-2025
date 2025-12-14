@@ -33,6 +33,9 @@ export default function Create({
         if (data.date > new Date().toISOString().split('T')[0]) {
             return alert('Date cannot be in the future!');
         }
+        if (data.imageUrl != '' && !/^https?:\/\/.+/i.test(data.imageUrl)) {
+            return alert('Image URL must start with http:// or https://');
+        }
 
         try {
             await request('http://localhost:3030/jsonstore/furniture', 'POST', data);

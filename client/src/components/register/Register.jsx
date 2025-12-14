@@ -14,6 +14,9 @@ export default function Register() {
         if (!username || !email || !password) {
             return alert("All fields are required!");
         }
+        if (email !== '' && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)) {
+            return alert("Invalid email address!");
+        }
 
         if (password !== confirmPassword) {
             return alert("Passwords missmatch!");
