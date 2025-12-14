@@ -15,6 +15,7 @@ import Details from "./components/details/Details.jsx"
 import Edit from "./components/edit/Edit.jsx"
 import UserContext from "./context/UserContext.jsx"
 import { useContext } from "react"
+import CreateBlog from "./components/blog/CreateBlog.jsx"
 
 
 function App() {
