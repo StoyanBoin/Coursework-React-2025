@@ -17,6 +17,12 @@ export default function CreateBlog({
         if (!data.title || !data.imageUrl || !data.body) {
             return alert('All fields are required!');
         }
+        if (data.title.length < 4) {
+            return alert('Title must be at least 4 characters long!');
+        }
+        if (data.body.length < 10) {
+            return alert('Body must be at least 10 characters long!');
+        }
         if (data.imageUrl != '' && !/^https?:\/\/.+/i.test(data.imageUrl)) {
             return alert('Image URL must start with http:// or https://');
         }
