@@ -39,8 +39,8 @@ export default function Shop() {
                                     velit. Aliquam vulputate velit imperdiet dolor tempor tristique.
                                 </p>
                                 <p>
-                                    {isAuthenticated
-                                        ? (
+                                    {isAuthenticated ?
+                                        (
                                             <Link to="/create" className="btn btn-secondary me-2">Create Now</Link>
                                         )
                                         : (
