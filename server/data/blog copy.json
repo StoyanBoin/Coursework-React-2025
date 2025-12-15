@@ -39,6 +39,26 @@
             "postId": "-MSbypx-13fHPDyzNRtf",
             "text": "A very interesting post!"
         },
+        "-MSgySbWEFw3rhCfIIns": {
+            "id": "-MSgySbWEFw3rhCfIIns",
+            "postId": "-MSbypx-13fHPDyzNRtf",
+            "text": "Unit Testing is a useful testing technique in programming."
+        },
+        "-MSgyUeUxLUNUorksrlq": {
+            "id": "-MSgyUeUxLUNUorksrlq",
+            "postId": "-MSbypx-13fHPDyzNRtf",
+            "text": "Modularization and encapsulation are two very important concepts in software engineering."
+        },
+        "-MSgyWOlRpJq2G2hBqYZ": {
+            "id": "-MSgyWOlRpJq2G2hBqYZ",
+            "postId": "-MSbz99qxklK-5rZWGmt",
+            "text": "AJAX (Asynchronous JavaScript and XML) is a set of tools used to make calls to servers to fetch some data."
+        },
+        "-MSgyY8fK5DetuiWvbbX": {
+            "id": "-MSgyY8fK5DetuiWvbbX",
+            "postId": "-MSbz99qxklK-5rZWGmt",
+            "text": "Thank you! This post is very useful."
+        },
         "-MSgyZoHC-v0eEdoy31Y": {
             "id": "-MSgyZoHC-v0eEdoy31Y",
             "postId": "-MSbzSdzWBvBHJN7gdRw",
@@ -53,6 +73,36 @@
             "id": "-MSgycIUgNg2qojbj7e1",
             "postId": "-MSbziiMKjPeV03elBfK",
             "text": "This is one of the best posts about Remote Databases I have read recently."
+        },
+        "-MSgydt2l0elQZ2vWXtL": {
+            "id": "-MSgydt2l0elQZ2vWXtL",
+            "postId": "-MSbziiMKjPeV03elBfK",
+            "text": "Great content!"
+        },
+        "-MSgyg1jo4ZATbbeLtCF": {
+            "id": "-MSgyg1jo4ZATbbeLtCF",
+            "postId": "-MSbziiMKjPeV03elBfK",
+            "text": "A nice overview of what 'Remote Databases' are."
+        },
+        "-MSgyhugLG4gmph9qIGB": {
+            "id": "-MSgyhugLG4gmph9qIGB",
+            "postId": "-MSbzvqGMJAXR1syO-nz",
+            "text": "This is the best post I have ever read about 'Templating'!"
+        },
+        "-MSgyl1Umh0tKd3ISkJt": {
+            "id": "-MSgyl1Umh0tKd3ISkJt",
+            "postId": "-MSbzvqGMJAXR1syO-nz",
+            "text": "Overall, the article is great."
+        },
+        "-MSgymXYyAU71cDX6-eK": {
+            "id": "-MSgymXYyAU71cDX6-eK",
+            "postId": "-MSc-8DwUmBi8NG52eOH",
+            "text": "This post helped me learn more about 'Routing'."
+        },
+        "-MSgyo88wO16izQZCVjh": {
+            "id": "-MSgyo88wO16izQZCVjh",
+            "postId": "-MSc-8DwUmBi8NG52eOH",
+            "text": "I would like to read more articles about 'Routing' like this one."
         }
     }
 }
