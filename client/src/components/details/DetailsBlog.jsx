@@ -73,24 +73,61 @@ export default function DetailsBlog({
                         {blog._creatorId === user._id
                             ?
                             (
-                            <div className="d-flex justify-content-between mt-4">
-                                {/* <Link to={`/shop/${id}/edit`} className="btn btn-warning">
+                                <div className="d-flex justify-content-between mt-4">
+                                    {/* <Link to={`/shop/${id}/edit`} className="btn btn-warning">
                                     Edit
                                 </Link> */}
 
-                                <button
-                                    onClick={deleteBlog}
-                                    className="btn btn-danger"
-                                >
-                                    Delete
-                                </button>
-                            </div>)
+                                    <button
+                                        onClick={deleteBlog}
+                                        className="btn btn-danger"
+                                    >
+                                        Delete
+                                    </button>
+                                </div>)
                             :
                             (<p></p>)
                         }
+                        {/* Comments Section */}
+                        <div className="mt-5">
+                            <h3>Comments</h3>
+
+                            {/* Existing comments */}
+                            {blog.comments && blog.comments.length > 0 ? (
+                                <ul className="list-group mb-4">
+                                    {blog.comments.map((comment, index) => (
+                                        <li key={index} className="list-group-item">
+                                            <strong>{comment.author}</strong>: {comment.text}
+                                            <div className="text-muted" style={{ fontSize: "0.9em" }}>
+                                                {comment.date}
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+                            ) : (
+                                <p>No comments yet. Be the first to comment!</p>
+                            )}
+
+                            {/* Add new comment form */}
+                            <form action="action" style={{ maxWidth: 600 }}>
+                                <div className="mb-3">
+                                    <label className="form-label">Your Comment</label>
+                                    <textarea
+                                        className="form-control"
+                                        rows={3}
+                                        name="comment"
+                                        required
+                                    ></textarea>
+                                </div>
+                                <button type="submit" className="btn btn-primary">
+                                    Add Comment
+                                </button>
+                            </form>
+                        </div>
                     </div>
-                </div>
+                </div >
             </div >
         </>
+
     );
 }
