@@ -12,10 +12,10 @@ import Cart from "./components/cart/Cart.jsx"
 import Logout from "./components/logout/Logout.jsx"
 import Details from "./components/details/Details.jsx"
 import Edit from "./components/edit/Edit.jsx"
-import UserContext, { useUserContext } from "./context/UserContext.jsx"
-import { useContext } from "react"
+import { useUserContext } from "./context/UserContext.jsx"
 import CreateBlog from "./components/create/CreateBlog.jsx"
 import Blog from "./components/blog/Blog.jsx"
+import DetailsBlog from "./components/details/DetailsBlog.jsx"
 
 
 
@@ -35,6 +35,7 @@ function App() {
                 {isAuthenticated ? (<Route path="/blog/create" element={<CreateBlog user={user}/>} />) : (<Route path="/blog/create" element={<Navigate to="/login" replace />} />)}
                 <Route path="/about" element={<AboutUs />} />
                 <Route path="/blog" element={<Blog user={user}/>} />
+                <Route path="/blog/:id/details" element={<DetailsBlog user={user}/>} />
                 <Route path="/contact" element={<ContactUs />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
