@@ -32,7 +32,7 @@ function App() {
                 {isAuthenticated ? (<Route path="/shop/:id/edit" element={<Edit user={user} />} />) : (<Route path="/shop/:id/edit" element={<Navigate to="/login" replace />} />)}
                 {isAuthenticated ? (<Route path="/create" element={<Create user={user} />} /> ) : (<Route path="/create" element={<Navigate to="/login" replace />} />)}
                 <Route path="/about" element={<AboutUs />} />
-                <Route path="/blog" element={<Blog />} />
+                <Route path="/blog" element={<CreateBlog />} />
                 <Route path="/contact" element={<ContactUs />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
