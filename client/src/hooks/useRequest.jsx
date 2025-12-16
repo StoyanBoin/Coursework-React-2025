@@ -1,10 +1,9 @@
-import { useContext } from "react";
-import UserContext from "../context/UserContext.jsx";
+import { useUserContext } from "../context/UserContext.jsx";
 
 // const baseUrl = 'http://localhost:3030';
 
 export default function useRequest() {
-    const { user, isAuthenticated } = useContext(UserContext)
+    const { user, isAuthenticated } = useUserContext()
 
     const request = async (url, method, data, config = {}) => {
         let options = {};
@@ -42,7 +41,6 @@ export default function useRequest() {
 
         return result;
     };
-    
 
     return {
         request,

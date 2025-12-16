@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
+import CreateComment from "../comment/CreateComment.jsx";
+import { useUserContext } from "../../context/UserContext.jsx";
+import DetailsComment from "./DetailsComment.jsx";
 
-export default function DetailsBlog({
-    user,
-}) {
-    const navigate = useNavigate();
+
+export default function DetailsBlog() {
     const { id } = useParams();
+    const navigate = useNavigate();
+    const { user } = useUserContext();
     const [blog, setBlog] = useState({});
 
     useEffect(() => {
@@ -88,11 +91,9 @@ export default function DetailsBlog({
                             :
                             (<p></p>)
                         }
-                        {/* Comments Section */}
+                        {/* Existing comments */}
                         <div className="mt-5">
-                            <h3>Comments</h3>
-
-                            {/* Existing comments */}
+                            {/* <h3>Comments</h3>
                             {blog.comments && blog.comments.length > 0 ? (
                                 <ul className="list-group mb-4">
                                     {blog.comments.map((comment, index) => (
@@ -106,28 +107,19 @@ export default function DetailsBlog({
                                 </ul>
                             ) : (
                                 <p>No comments yet. Be the first to comment!</p>
-                            )}
+                            )} */}
+                            {/* Comments Section */}
+                            <div className="mt-5">
 
-                            {/* Add new comment form */}
-                            <form action="action" style={{ maxWidth: 600 }}>
-                                <div className="mb-3">
-                                    <label className="form-label">Your Comment</label>
-                                    <textarea
-                                        className="form-control"
-                                        rows={3}
-                                        name="comment"
-                                        required
-                                    ></textarea>
-                                </div>
-                                <button type="submit" className="btn btn-primary">
-                                    Add Comment
-                                </button>
-                            </form>
+                                <DetailsComment />
+
+                                {user && <CreateComment user={user} />}
+
+                            </div>
                         </div>
-                    </div>
+                    </div >
                 </div >
             </div >
         </>
-
     );
 }
