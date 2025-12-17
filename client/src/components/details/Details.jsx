@@ -35,8 +35,7 @@ export default function Details({
             alert(err.message);
         }
     }
-    console.log(furniture);
-    
+
     return (
         <>
             <div className="hero">
@@ -77,22 +76,21 @@ export default function Details({
                             <strong>Summary:</strong> {furniture.summary}
                         </p>
                         {/* Action Buttons */}
-
-                        {furniture._creatorId === user._id
+                        {furniture._creatorId === user?._id
                             ?
                             (
-                            <div className="d-flex justify-content-between mt-4">
-                                <Link to={`/shop/${id}/edit`} className="btn btn-warning">
-                                    Edit
-                                </Link>
+                                <div className="d-flex justify-content-between mt-4">
+                                    <Link to={`/shop/${id}/edit`} className="btn btn-warning">
+                                        Edit
+                                    </Link>
 
-                                <button
-                                    onClick={deleteFurniture}
-                                    className="btn btn-danger"
-                                >
-                                    Delete
-                                </button>
-                            </div>)
+                                    <button
+                                        onClick={deleteFurniture}
+                                        className="btn btn-danger"
+                                    >
+                                        Delete
+                                    </button>
+                                </div>)
                             :
                             (<p></p>)
                         }
