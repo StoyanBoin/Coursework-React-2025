@@ -11,6 +11,7 @@ export default function useForm(callback, initialValues) {
     };
     const formAction = (formData) => {
         callback(values, formData);
+        resetForm();
     };
 
     const registerFild = (fieldName) => {
@@ -21,10 +22,13 @@ export default function useForm(callback, initialValues) {
         };
     }
 
+    const resetForm = () => setValues(initialValues);
+
     return {
         values,
         changeHandler,
         formAction,
         registerFild,
+        resetForm,
     }
 }
