@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
-import CreateComment from "../comment/CreateComment.jsx";
 import { useUserContext } from "../../context/UserContext.jsx";
-import DetailsComment from "./DetailsComment.jsx";
 
 
 export default function DetailsBlog() {
@@ -111,9 +109,9 @@ export default function DetailsBlog() {
                             {/* Comments Section */}
                             <div className="mt-5">
 
-                                <DetailsComment />
+                                {/* <DetailsComment />
 
-                                {user && <CreateComment user={user} />}
+                                {user && <CreateComment user={user} />} */}
 
                             </div>
                         </div>
