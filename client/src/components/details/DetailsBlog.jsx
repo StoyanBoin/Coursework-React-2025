@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { useUserContext } from "../../context/UserContext.jsx";
+import CreateComment from "../comment/CreateComment.jsx";
+import DetailsComments from "./DetailsComments.jsx";
 
 
 export default function DetailsBlog() {
@@ -8,6 +10,7 @@ export default function DetailsBlog() {
     const navigate = useNavigate();
     const { user } = useUserContext();
     const [blog, setBlog] = useState({});
+    const [refresh, setRefresh] = useState(false)
 
     useEffect(() => {
         fetch(`http://localhost:3030/jsonstore/blog/${id}`)
@@ -32,6 +35,10 @@ export default function DetailsBlog() {
         } catch (err) {
             alert(err.message);
         }
+    }
+
+    const refreshHanler = () => {
+        setRefresh(state => !state)
     }
 
     return (
@@ -109,9 +116,9 @@ export default function DetailsBlog() {
                             {/* Comments Section */}
                             <div className="mt-5">
 
-                                {/* <DetailsComment />
+                                <DetailsComments refresh={refresh} />
 
-                                {user && <CreateComment user={user} />} */}
+                                {user && <CreateComment user={user} onCreate={refreshHanler}/>}
 
                             </div>
                         </div>
