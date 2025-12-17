@@ -35,6 +35,8 @@ export default function Details({
             alert(err.message);
         }
     }
+    console.log(furniture);
+    
     return (
         <>
             <div className="hero">
