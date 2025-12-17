@@ -29,8 +29,7 @@ export default function CreateBlog({
 
         try {
             await request('http://localhost:3030/jsonstore/blog', 'POST', data);
-            
-            console.log(user);
+        
             
             navigate('/blog');
         }
